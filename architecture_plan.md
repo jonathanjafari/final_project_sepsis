@@ -6,15 +6,15 @@ This document walks through the cloud architecture behind the sepsis early-warni
 
 ## 1. Service Overview and Why Each One Was Chosen
 
-The table below isn’t meant to be exhaustive but captures the main cloud pieces and what role each one plays in the pipeline.
+This mapping also illustrates how each piece of the design builds on earlier HHA 504 labs and the HHA 507 sepsis modeling work.
 
-| Layer     | Cloud Service                 | Purpose in the System |
-|-----------|------------------------------|------------------------|
-| Storage   | **Google Cloud Storage**     | Landing area for raw vitals/labs CSVs. Simple, cheap, reliable. |
-| Compute   | **Cloud Function or Cloud Run Job** | Cleans files, assembles feature windows, and pushes results to BigQuery. |
-| Analytics | **BigQuery**                 | Stores the engineered features and model predictions; also used for simple model training/scoring. |
-| Frontend  | **Cloud Run (Flask App)**    | Lightweight dashboard for clinicians to view risk scores. |
-| Database  | **Cloud SQL (optional)**     | If needed, provides fast lookups for dashboard queries (e.g., latest scores). |
+| Layer     | Cloud Service                  | Purpose in the System                                                | Related Assignment / Module                          |
+|-----------|--------------------------------|-----------------------------------------------------------------------|-------------------------------------------------------|
+| Storage   | Google Cloud Storage           | Landing area for raw vitals/labs CSVs.                               | HHA 504 – Cloud Functions / Storage lab               |
+| Compute   | Cloud Function / Cloud Run Job | ETL + feature engineering from raw files into feature tables.        | HHA 504 – Serverless function (HbA1c)                 |
+| Analytics | BigQuery                       | Stores features and predictions; supports queries and model scoring. | HHA 504 – SQL/analytics work; HHA 507 sepsis model    |
+| Frontend  | Cloud Run (Flask)              | Simple web dashboard/API for viewing sepsis risk.                    | HHA 504 – HTTP-triggered functions / APIs             |
+| Database  | Cloud SQL (optional)           | Fast operational lookups of current predictions for the app.         | HHA 504 – MySQL VM vs Managed SQL project             |
 
 This mix of services is intentionally serverless. Instead of running a long-lived VM, each component wakes up only when needed. That keeps costs low and avoids operational overhead.
 
