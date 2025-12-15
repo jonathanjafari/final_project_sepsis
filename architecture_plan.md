@@ -8,6 +8,8 @@ This document walks through the cloud architecture behind the sepsis early-warni
 
 This mapping also illustrates how each piece of the design builds on earlier HHA 504 labs and the HHA 507 sepsis modeling work.
 
+Related Module refers to the part of HHA 504 where the underlying cloud concept was introduced (e.g., serverless functions, cloud storage, managed SQL, or container deployment). It does not imply we built these exact services in that module.
+
 | Layer     | Cloud Service                  | Purpose in the System                                                | Related Assignment / Module                         |
 |-----------|--------------------------------|-----------------------------------------------------------------------|-----------------------------------------------------|
 | Storage   | Google Cloud Storage           | Landing area for raw vitals/labs CSVs.                               | Module 6 – Cloud Storage (Azure & GCP)              |
