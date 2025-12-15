@@ -8,13 +8,14 @@ This document walks through the cloud architecture behind the sepsis early-warni
 
 This mapping also illustrates how each piece of the design builds on earlier HHA 504 labs and the HHA 507 sepsis modeling work.
 
-| Layer     | Cloud Service                  | Purpose in the System                                                | Related Assignment / Module                          |
-|-----------|--------------------------------|-----------------------------------------------------------------------|-------------------------------------------------------|
-| Storage   | Google Cloud Storage           | Landing area for raw vitals/labs CSVs.                               | HHA 504 – Cloud Functions / Storage lab               |
-| Compute   | Cloud Function / Cloud Run Job | ETL + feature engineering from raw files into feature tables.        | HHA 504 – Serverless function (HbA1c)                 |
-| Analytics | BigQuery                       | Stores features and predictions; supports queries and model scoring. | HHA 504 – SQL/analytics work; HHA 507 sepsis model    |
-| Frontend  | Cloud Run (Flask)              | Simple web dashboard/API for viewing sepsis risk.                    | HHA 504 – HTTP-triggered functions / APIs             |
-| Database  | Cloud SQL (optional)           | Fast operational lookups of current predictions for the app.         | HHA 504 – MySQL VM vs Managed SQL project             |
+| Layer     | Cloud Service                  | Purpose in the System                                                | Related Assignment / Module                         |
+|-----------|--------------------------------|-----------------------------------------------------------------------|-----------------------------------------------------|
+| Storage   | Google Cloud Storage           | Landing area for raw vitals/labs CSVs.                               | Module 6 – Cloud Storage (Azure & GCP)              |
+| Compute   | Cloud Function / Cloud Run Job | ETL + feature engineering from raw files into feature tables.        | Module 5 – Serverless Functions (Azure & GCP)       |
+| Analytics | BigQuery                       | Stores features and predictions; supports queries and model scoring. | Module 2 – Analytics Foundations & DB Concepts      |
+| Frontend  | Cloud Run (Flask)              | Simple web dashboard/API for viewing sepsis risk.                    | Module 10 – Containers & Deployment (Flask/Docker)  |
+| Database  | Cloud SQL (optional)           | Fast operational lookups of current predictions for the app.         | Module 2 – Cloud Databases (Managed SQL)            |
+
 
 This mix of services is intentionally serverless. Instead of running a long-lived VM, each component wakes up only when needed. That keeps costs low and avoids operational overhead.
 
