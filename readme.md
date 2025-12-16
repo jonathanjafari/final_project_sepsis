@@ -1,9 +1,7 @@
 # Cloud-Based Sepsis Early Warning Pipeline  
 ### HHA 504 – Final Project (Cloud Integration Mini-Capstone)
 
-This project presents a small, cloud-oriented design for a sepsis early warning pipeline using synthetic clinical data.  
-It also includes an optional Flask prototype demonstrating how a simple web service might interact with cloud resources.  
-No PHI is used — all data described is synthetic.
+This project presents a small, cloud-oriented design for a sepsis early warning pipeline using synthetic clinical data. It also includes an optional Flask prototype demonstrating how a simple web service might interact with cloud resources. No PHI is used — all data described is synthetic.
 
 ---
 
